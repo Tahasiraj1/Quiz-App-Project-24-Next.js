@@ -21,6 +21,17 @@ type QuizState = {
     isLoading: boolean;
 };
 
+// Type definitions for API response
+interface ApiResponse {
+    results: ApiQuestion[];
+}
+
+interface ApiQuestion {
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
 export default function Quiz() {
     const [state, setState] = useState<QuizState>({
         currentQuestion: 0,
@@ -38,8 +49,8 @@ export default function Quiz() {
                 const response = await fetch(
                     "https://opentdb.com/api.php?amount=10&type=multiple"
                 );
-                const data = await response.json();
-                const questions = data.results.map((item: any) => {
+                const data: ApiResponse = await response.json();
+                const questions = data.results.map((item: ApiQuestion) => {
                     const incorrectAnswers = item.incorrect_answers.map(
                         (answer: string) => ({
                             text: answer,
