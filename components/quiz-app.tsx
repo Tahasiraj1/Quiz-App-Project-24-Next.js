@@ -95,6 +95,10 @@ export default function Quiz() {
         }
     };
 
+    const handleExitQuiz = (): void => {
+        window.close();
+    }
+
     // Function to reset the quiz
     const resetQuiz = (): void => {
         setState({
@@ -135,15 +139,21 @@ export default function Quiz() {
         >
             {state.showResults ? (
                 // Show results if the quiz is finished
-                <div className='bg-amber-200 p-8 rounded-lg shadow-2xl w-full max-w-md'>
+                <div className='bg-amber-200 p-8 rounded-xl shadow-2xl w-full max-w-md'>
                     <h2 className='text-2xl font-bold mb-4'>Results</h2>
                     <p className='text-lg mb-4'>
                         You scored {state.score} out of {state.questions.length}
                     </p>
+                    <div className='flex justify-center items-center gap-4'>
                     <Button
-                    onClick={resetQuiz} className='w-full'>
+                    onClick={resetQuiz} className='w-full rounded-full'>
                         Try Again
                     </Button>
+                    <Button
+                    onClick={handleExitQuiz} className='w-full rounded-full'>
+                        Exit
+                    </Button>
+                    </div>
                 </div>
             ) : (
                 // Show current question and answers if the quiz is in progress
