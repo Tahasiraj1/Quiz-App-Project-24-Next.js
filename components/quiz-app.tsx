@@ -126,7 +126,7 @@ export default function Quiz() {
 
     // JSX return statement rendering the Quiz UI
     return (
-        <div className='flex flex-col items-center justify-center h-screen bg-gradient-to-br from-orange-300 via-orange-200 to-orange-400 text-foreground'
+        <div className='p-4 sm:p-8 flex flex-col items-center justify-center h-screen bg-gradient-to-br from-orange-300 via-orange-200 to-orange-400 text-foreground'
         style={{
             backgroundImage: `url('/quizapp.jpg')`,
             backgroundPosition: 'center',
